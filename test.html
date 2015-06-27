@@ -1,0 +1,237 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>Highcharts Example</title>
+
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <style type="text/css">
+${demo.css}
+        </style>
+        <script type="text/javascript">
+
+$(function () {
+    // Create the chart
+    $('#container').highcharts({
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'District view'
+        },
+        subtitle: {
+            text: ''
+        },
+        xAxis: {
+            type: 'category'
+        },
+        yAxis: {
+            title: {
+                text: 'Risk percent'
+            }
+
+        },
+        legend: {
+            enabled: false
+        },
+        plotOptions: {
+            series: {
+                borderWidth: 0,
+                dataLabels: {
+                    enabled: true,
+                    format: '{point.y:.1f}%'
+                }
+            }
+        },
+
+        tooltip: {
+            headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+            pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>'
+        },
+
+        series: [{
+            name: "PHCs",
+            colorByPoint: true,
+            data: [{
+                name: "PHC1",
+                y: 56.33,
+                drilldown: "PHC1"
+            }, {
+                name: "PHC2",
+                y: 24.030000000000005,
+                drilldown: "PHC2"
+            }, {
+                name: "PHC3",
+                y: 10.38,
+                drilldown: "PHC3"
+            }, {
+                name: "PHC4",
+                y: 4.77,
+                drilldown: "PHC4"
+            }, {
+                name: "PHC5",
+                y: 0.9100000000000001,
+                drilldown: "PHC5"
+            }, {
+                name: "Proprietary or Undetectable",
+                y: 0.2,
+                drilldown: null
+            }]
+        }],
+        drilldown: {
+            series: [{
+                name: "PHC1",
+                id: "PHC1",
+                data: [
+                [
+                "P1",
+                24.13],
+                [
+                "P2",
+                17.2],
+                [
+                "P3",
+                8.11],
+                [
+                "P4",
+                5.33],
+                [
+                "P5",
+                1.06],
+                [
+                "P6",
+                0.5]
+                ]
+            }, {
+                name: "PHC2",
+                id: "PHC2",
+                data: [
+                [
+                "P1",
+                5],
+                [
+                "P2",
+                4.32],
+                [
+                "P3",
+                3.68],
+                [
+                "P4",
+                2.96],
+                [
+                "P5",
+                2.53],
+                [
+                "P6",
+                1.45],
+                [
+                "P7",
+                1.24],
+                [
+                "P8",
+                0.85],
+                [
+                "P9",
+                0.6],
+                [
+                "P10",
+                0.55],
+                [
+                "P11",
+                0.38],
+                [
+                "P12",
+                0.19],
+                [
+                "P13",
+                0.14],
+                [
+                "P14",
+                0.14]
+                ]
+            }, {
+                name: "PHC3",
+                id: "PHC3",
+                data: [
+                [
+                "P1",
+                2.76],
+                [
+                "P2",
+                2.32],
+                [
+                "P3",
+                2.31],
+                [
+                "P4",
+                1.27],
+                [
+                "P5",
+                1.02],
+                [
+                "P6",
+                0.33],
+                [
+                "P7",
+                0.22],
+                [
+                "P8",
+                0.15]
+                ]
+            }, {
+                name: "PHC4",
+                id: "PHC4",
+                data: [
+                [
+                "P1",
+                2.56],
+                [
+                "P2",
+                0.77],
+                [
+                "P3",
+                0.42],
+                [
+                "P4",
+                0.3],
+                [
+                "P5",
+                0.29],
+                [
+                "P6",
+                0.26],
+                [
+                "P7",
+                0.17]
+                ]
+            }, {
+                name: "PHC5",
+                id: "PHC5",
+                data: [
+                [
+                "P1",
+                0.34],
+                [
+                "P2",
+                0.24],
+                [
+                "P3",
+                0.17],
+                [
+                "P4",
+                0.16]
+                ]
+            }]
+        }
+    });
+});
+        </script>
+    </head>
+    <body>
+<script src="js/highcharts.js"></script>
+<script src="js/modules/data.js"></script>
+<script src="js/modules/drilldown.js"></script>
+
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+    </body>
+</html>

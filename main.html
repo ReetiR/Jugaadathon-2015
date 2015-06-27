@@ -1,0 +1,294 @@
+<html>
+<head><!-- Google fonts -->
+<link href='http://fonts.googleapis.com/css?family=Vollkorn:400,700' rel='stylesheet' type='text/css'>
+<style type="text/css">
+/* = body
+------------------------*/
+body{
+  background:#354458;
+}
+.description{
+  font-family: 'Vollkorn', serif;
+  text-align:center;
+  color:#ecf0f1;
+  text-shadow:0 0.1em 0.2em #008c8d;
+}
+/* = Scroll body
+------------------------*/
+::-webkit-scrollbar{
+  width:0.2em;
+}
+::-webkit-scrollbar-track{
+  background-color:#bdc3c7;
+}
+::-webkit-scrollbar-thumb{
+  background-color:#7f8c8d;
+}
+/* = table
+------------------------*/
+.box-table table{
+  border-collapse:collapse;
+  text-align:left;
+  width:100%;
+  margin:0;
+  padding:0;
+  background:#7f8c8d;
+  animation: responsive 5s infinite ease-in-out;
+}
+.box-table{
+  font:normal 12px/150% Arial, Helvetica, sans-serif;
+  overflow:hidden;
+  margin:0 auto;
+  display:block;
+  width:95%;
+  padding:2.5%;
+}
+.box-table table thead th{
+  background-color:#7f8c8d;
+  color:#bdc3c7;
+  text-align:center;
+  padding: 0.75em;
+  font-family: 'Vollkorn', serif;
+  font-weight: bold;
+  font-size: 1.5em;
+  height: 1.5em;
+  vertical-align: top;
+}
+.box-table table tbody td,
+.box-table table tbody tr{
+  font-family: 'Vollkorn', serif;
+  font-size:1em;
+  border:none;
+  padding:1em;
+}
+.box-table table tbody tr:nth-child(odd){
+  background:#ecf0f1;
+  color:#95a5a6;
+}
+.box-table table tbody tr:nth-child(even){
+  background:#bdc3c7;
+  color:#7f8c8d;
+}
+.box-table table tbody tr a{
+  text-decoration:none;
+  color:#e67e22;
+}
+.box-table table tbody tr a:hover{
+  color:#d35400;
+}
+.box-table .user-photo{
+  background:#bdc3c7;
+}
+.box-table .user-tumb{
+  width:6em;
+  height:6em;
+  padding:0;
+  display:table-cell;
+  text-align:center;
+  margin:0 auto;
+  -webkit-border-radius:100%;
+  -moz-border-radius:100%;
+  border-radius:100%;
+}
+
+
+/* = Responsive table
+------------------------*/
+
+/* http://elvery.net/demo/responsive-tables/  */
+@media only screen and (max-width: 800px){
+  .box-table table{
+    width:100%;
+    border-collapse:collapse;
+    border-spacing:0;
+  }
+  .box-table th,
+  .box-table td{
+    margin:0;
+    vertical-align:top;
+  }
+  .box-table th{
+    text-align:left;
+  }
+  .box-table table{
+    display:block;
+    position:relative;
+    width:100%;
+  }
+  .box-table thead{
+    display:block;
+    float:left;
+  }
+  .box-table tbody{
+    display:block;
+    width:auto;
+    position:relative;
+    overflow-x:auto;
+    white-space:nowrap;
+  }
+  .box-table thead tr{
+    display:block;
+  }
+  .box-table th{
+    display:block;
+    text-align:right;
+  }
+  .box-table tbody tr{
+    display:inline-block;
+    vertical-align:top;
+  }
+  .box-table td{
+    display:block;
+    min-height:1.25em;
+    text-align:left;
+  }
+  .box-table th{
+    border-bottom:0;
+    border-left:0;
+  }
+  .box-table td{
+    border-left:0;
+    border-right:0;
+    border-bottom:0;
+  }
+}
+/* = Error
+------------------------*/
+.error_table {
+  display: block;
+  background: #E05E5E;
+  color: #D1D1D1;
+  font-family: 'Vollkorn', serif;
+  text-align: center;
+  font-size: 3em;
+  width: 90%;
+  padding: 5%;
+}
+/* = Loader
+------------------------*/
+.loading_table{
+  background:#d35400;
+  color:#ecf0f1;
+  font-family: 'Vollkorn', serif;
+  text-align: center;
+  font-size: 1em;
+  width: 0;
+  display: block;
+  overflow: hidden;
+  height: 1em;
+  padding:0.5em;
+  animation: table_loader 10s infinite ease;
+}
+@keyframes table_loader{50%{width:100%}}
+@-webkit-keyframes table_loader{50%{width:100%}}
+@-moz-keyframes table_loader{50%{width:100%}}
+@-ms-keyframes table_loader{50%{width:100%}}
+@-o-keyframes table_loader{ 50%{width:100%}}
+</style>
+</head>
+<body>
+<!-- Description -->
+<h1 class="description">
+  Responsive table with json data.
+</h1>
+
+<!-- Table demo -->
+<div class="box-table">
+  <table id="test"></table>
+</div>
+
+<script type="text/javascript">
+
+function write_table(obj){
+      var html = '<thead>'+
+          '<tr>'+
+          '<th>Photo</th>'+
+          '<th>Name</th>'+
+          '<th>Last Name</th>'+    
+          '<th>Age</th>'+
+          '<th>Risk</th>'+
+          '<th>Action</th>'+
+          '</tr>'+
+          '</thead>';
+
+      var  html = html + '<tr onclick="show()">'+
+          '<td class="user-photo">'+
+          '<img class="user-tumb" src="'+obj.photo+'"/>'+
+          '</td>'+
+          '<td>'+obj.name+'</td>'+
+          '<td>'+obj.last+'</td>'+
+          '<td>'+obj.age+'</td>'+
+          '<td>'+obj.risk+'</td>'+
+          '</td>'+
+          '</tr>';  
+      return html;
+    }
+document.getElementById("test").innerHTML = write_table({"photo":"www.google.com","name":"priyam", "last":"Stupid","age":"50","address":"99%"})
+
+function show()
+{
+  document.getElementById('container').style.display = "block";
+}
+
+</script>    
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <style type="text/css">
+${demo.css}
+    </style>
+    <script type="text/javascript">
+$(function () {
+    $('#container').highcharts({
+        title: {
+            text: 'Patient Data',
+            x: -20 //center
+        },
+        subtitle: {
+            text: '',
+            x: -20
+        },
+        xAxis: {
+            categories: ['Week 3', 'Week 6', 'Week 9', 'Week 12', 'Week 15', 'Week 18', 'Week 21', 'Week 24', 'Week 27', 'Week 30', 'Week 33', 'Week 36']
+        },
+        yAxis: {
+            title: {
+                text: 'Percent'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        tooltip: {
+            valueSuffix: '°C'
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle',
+            borderWidth: 0
+        },
+        series: [{
+            name: 'Anaemia',
+            data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
+        }, {
+            name: 'Test1',
+            data: [-0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5]
+        }, {
+            name: 'Test2',
+            data: [-0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0]
+        }, {
+            name: 'Test3',
+            data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
+        }]
+    });
+});
+</script>
+
+<script src="js/highcharts.js"></script>
+<script src="js/modules/exporting.js"></script>
+
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto; display:none"></div>
+
+</body>
+</html>
