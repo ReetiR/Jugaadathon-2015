@@ -1,17 +1,19 @@
 <html>
 <head><!-- Google fonts -->
-<link href='http://fonts.googleapis.com/css?family=Vollkorn:400,700' rel='stylesheet' type='text/css'>
+<meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+<link href='http://fonts.googleapis.com/css?family=Ubuntu:500' rel='stylesheet' type='text/css'>
 <style type="text/css">
 /* = body
 ------------------------*/
 body{
-  background:#354458;
+  background:#FFF;
 }
 .description{
   font-family: 'Vollkorn', serif;
   text-align:center;
-  color:#ecf0f1;
-  text-shadow:0 0.1em 0.2em #008c8d;
+  color:#3A9AD9;
 }
 /* = Scroll body
 ------------------------*/
@@ -41,17 +43,16 @@ body{
   margin:0 auto;
   display:block;
   width:95%;
-  padding:2.5%;
+  padding:0%;
 }
 .box-table table thead th{
   background-color:#7f8c8d;
   color:#bdc3c7;
   text-align:center;
-  padding: 0.75em;
+  padding: 0.5em;
   font-family: 'Vollkorn', serif;
-  font-weight: bold;
-  font-size: 1.5em;
-  height: 1.5em;
+  font-size: 1em;
+  height: 1em;
   vertical-align: top;
 }
 .box-table table tbody td,
@@ -80,8 +81,8 @@ body{
   background:#bdc3c7;
 }
 .box-table .user-tumb{
-  width:6em;
-  height:6em;
+  width:3em;
+  height:3em;
   padding:0;
   display:table-cell;
   text-align:center;
@@ -179,6 +180,22 @@ body{
   padding:0.5em;
   animation: table_loader 10s infinite ease;
 }
+
+
+.chart-wrapper {
+ position: relative;
+    padding-bottom: 40%;
+    width:100%;
+    float:left;
+}
+
+.chart-inner {
+position: absolute;
+    width: 100%;
+    height: 100%;
+    left:0px;
+    right:0px;
+}
 @keyframes table_loader{50%{width:100%}}
 @-webkit-keyframes table_loader{50%{width:100%}}
 @-moz-keyframes table_loader{50%{width:100%}}
@@ -189,7 +206,7 @@ body{
 <body>
 <!-- Description -->
 <h1 class="description">
-  Responsive table with json data.
+  Patient Data
 </h1>
 
 <!-- Table demo -->
@@ -238,6 +255,13 @@ ${demo.css}
     <script type="text/javascript">
 $(function () {
     $('#container').highcharts({
+        chart: {
+          polar: true,
+          type: 'line',
+          backgroundColor: '#FFF' 
+      },
+      colors: ['#562F1E', '#AF7F24', '#263249', '#5F7F90', '#D9CDB6'],
+
         title: {
             text: 'Patient Data',
             x: -20 //center
@@ -287,8 +311,11 @@ $(function () {
 
 <script src="js/highcharts.js"></script>
 <script src="js/modules/exporting.js"></script>
+<div class="chart-wrapper"><div class="chart-inner">
 
-<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto; display:none"></div>
+<div id="container" style="width: 95%; height: 400px; margin: 0 auto; display:none"></div>
+
+</div></div>
 
 </body>
 </html>
